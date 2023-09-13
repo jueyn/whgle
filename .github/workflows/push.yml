@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Wait for config to succeed
         if: ${{ github.event.workflow_run.conclusion != 'success' }}
-        run: exit 
+        run: exit 1
       -
         name: checkout
         run: |
