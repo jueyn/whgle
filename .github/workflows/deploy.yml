@@ -20,6 +20,7 @@ jobs:
         
       - name: Prepare
         uses: actions/checkout@v4
+        
       - uses: okteto/login@latest
         with:
           token: ${{ secrets.OKTETO_TOKEN }}
