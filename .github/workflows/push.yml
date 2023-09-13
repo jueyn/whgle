@@ -21,17 +21,19 @@ jobs:
       COMMIT_MESSAGE: ${COMMIT_MESSAGE}
       
     steps:
-      - name: Wait for config to succeed
+      -
+        name: Wait for config to succeed
         if: ${{ github.event.workflow_run.conclusion != 'success' }}
         run: exit 1
+        
       -
-        name: checkout
+        name: Checkout
         run: |
           git config --global --add safe.directory $(pwd)
           git clone --quiet https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} origin
           
       -
-        name: push
+        name: Push
         run: |
           mkdir --parents "$HOME/.ssh"
           DEPLOY_KEY_FILE="$HOME/.ssh/deploy_key"
